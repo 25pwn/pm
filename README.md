@@ -17,3 +17,8 @@ Supported actions depend on the package
 ```
 ./pm ACTION PACKAGE
 ```
+Examples:
+```
+./pm install firefox-devedition
+./pm uninstall firefox-devedition
+```
