@@ -1,0 +1,3 @@
+#!/bin/sh
+firefox_edition="firefox-esr"
+. ./._firefox

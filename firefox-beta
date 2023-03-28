@@ -1,0 +1,3 @@
+#!/bin/sh
+firefox_edition="firefox-beta"
+. ./._firefox
