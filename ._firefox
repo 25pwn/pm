@@ -364,7 +364,7 @@ pm_uninstall()
 	rm -f "${HOME}/.local/share/applications/${firefox_edition}.desktop"
 
 	for i in 16 32 48 64 128; do
-		rm "${HOME}/.local/share/icons/hicolor/${i}x${i}/apps/${firefox_edition}.png"
+		rm -f "${HOME}/.local/share/icons/hicolor/${i}x${i}/apps/${firefox_edition}.png"
 	done
 
 	rm -f "${HOME}/.local/bin/${firefox_edition}"
