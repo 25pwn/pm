@@ -22,8 +22,6 @@ case "${firefox_edition}" in
 		exit 1
 esac
 
-pm_package_name="${firefox_edition}"
-
 pm_install()
 {
 	# TODO: install dependencies

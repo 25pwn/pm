@@ -44,3 +44,10 @@ curl_download()
 	-LSf \
 	"${uri:?}"
 }
+pm_data_dir="${XDG_DATA_HOME:-\${HOME\}/.local/share}"
+
+pm_state_dir="${XDG_STATE_HOME:-\${HOME\}/.local/state}"
+
+pm_package_data_dir="${pm_data_dir}/${pm_package_name}"
+
+pm_package_state_dir="${pm_state_dir}/${pm_package_name}"
