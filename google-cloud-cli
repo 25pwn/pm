@@ -1,0 +1,33 @@
+#!/bin/sh
+# A mix between https://cloud.google.com/sdk/docs/install and https://cloud.google.com/sdk/docs/downloads-interactive
+# the script https://cloud.google.com/sdk/docs/downloads-interactive tells you to run is https://sdk.cloud.google.com which executes https://dl.google.com/dl/cloudsdk/channels/rapid/install_google_cloud_sdk.bash which downloads https://dl.google.com/dl/cloudsdk/channels/rapid/google-cloud-sdk.tar.gz
+pm_install()
+{
+	uri="https://dl.google.com/dl/cloudsdk/channels/rapid/google-cloud-sdk.tar.gz"
+	mkdir -p "${pm_package_data_dir}"
+	curl_download "${uri}" --tlsv1.3 | \
+		tar -xzf - --strip-components=1 -C "${pm_package_data_dir}"
+	
+	"${pm_package_data_dir}/install.sh" \
+	--quiet \
+	--override-components core gcloud \
+	--command-completion true \
+	--bash-completion true \
+	--path-update true
+}
+
+pm_uninstall()
+{
+	# TODO: revert profile
+	
+	rm -rf "$(gcloud info --format='value(config.paths.global_config_dir)')"
+	rm -rf "$(gcloud info --format='value(installation.sdk_root)')"
+	
+	# kind of redundant but just in case
+	rm -rf "${pm_package_data_dir}"
+}
+
+pm_update()
+{
+	gcloud -q components update
+}
