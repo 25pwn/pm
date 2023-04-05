@@ -1,0 +1,28 @@
+#!/bin/sh
+pm_configure()
+{
+	detect_command flatpak
+	
+	# https://flathub.org/
+	flatpak --user remote-add --if-not-exists \
+		flathub https://flathub.org/repo/flathub.flatpakrepo &
+
+	# https://discourse.flathub.org/t/how-to-use-flathub-beta/2111
+	flatpak --user remote-add --if-not-exists \
+		flathub-beta https://flathub.org/beta-repo/flathub-beta.flatpakrepo &
+
+	# https://userbase.kde.org/Tutorials/Flatpak
+	flatpak --user remote-add --if-not-exists \
+		kdeapps https://distribute.kde.org/kdeapps.flatpakrepo &
+	
+	# https://wiki.gnome.org/Apps/Nightly
+	flatpak --user remote-add --if-not-exists \
+		gnome-nightly https://nightly.gnome.org/gnome-nightly.flatpakrepo &
+	
+	wait
+}
+
+pm_update_subpackages()
+{
+	flatpak --user -y update
+}
