@@ -1,9 +1,4 @@
 #!/bin/sh
-
-pm_data_dir="${XDG_DATA_HOME:-\${HOME\}/.local/share}"
-
-pm_state_dir="${XDG_STATE_HOME:-\${HOME\}/.local/state}"
-
 write_to_file()
 {
 	target="${1}"
