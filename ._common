@@ -49,6 +49,16 @@ get_distro()
 	)
 }
 
+detect_command()
+{
+	command="${1:?}"
+	# https://stackoverflow.com/questions/592620/how-can-i-check-if-a-program-exists-from-a-bash-script
+	if ! command -v "${command}" > /dev/null 2>&1; then
+		printf '%s\n' "${command} not found"
+		exit 1
+	fi
+}
+
 pm_distro=$(get_distro)
 
 pm_data_dir="${XDG_DATA_HOME:-\${HOME\}/.local/share}"
