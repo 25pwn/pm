@@ -12,7 +12,7 @@ pm_install()
 	esac
 
 	if [ $(id -u) != 0 ]; then
-		printf '%s\n' "package requires root"
+		printf '%s\n' "action requires root"
 		exit 1
 	fi
 	
