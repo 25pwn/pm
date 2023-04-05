@@ -1,6 +1,5 @@
 #!/bin/sh
 # https://docs.fedoraproject.org/en-US/quick-docs/setup_rpmfusion/
-pm_package_name="rpmfusion"
 pm_install()
 {
 	case "${pm_distro}" in
