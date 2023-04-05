@@ -39,6 +39,18 @@ curl_download()
 	-LSf \
 	"${uri:?}"
 }
+
+# https://www.freedesktop.org/software/systemd/man/os-release.html
+get_distro()
+{
+	(
+		. '/etc/os-release'
+		printf '%s' "${ID}"
+	)
+}
+
+pm_distro=$(get_distro)
+
 pm_data_dir="${XDG_DATA_HOME:-\${HOME\}/.local/share}"
 
 pm_state_dir="${XDG_STATE_HOME:-\${HOME\}/.local/state}"
