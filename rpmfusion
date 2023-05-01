@@ -2,6 +2,8 @@
 # https://docs.fedoraproject.org/en-US/quick-docs/setup_rpmfusion/
 pm_install()
 {
+	assert_root
+
 	case "${pm_distro}" in
 		"fedora")
 			;;
@@ -10,17 +12,8 @@ pm_install()
 			exit 1
 			;;
 	esac
-
-	if [ $(id -u) != 0 ]; then
-		printf '%s\n' "action requires root"
-		exit 1
-	fi
 	
-	sudo dnf install -y \
-		https://download1.rpmfusion.org/free/fedora/rpmfusion-free-release-$(rpm -E %fedora).noarch.rpm &
-	
-	sudo dnf install -y \
-		https://download1.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-$(rpm -E %fedora).noarch.rpm &
-
-	wait
+	dnf install -y \
+		https://download1.rpmfusion.org/free/fedora/rpmfusion-free-release-$(rpm -E %fedora).noarch.rpm \
+		https://download1.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-$(rpm -E %fedora).noarch.rpm
 }
