@@ -59,6 +59,14 @@ detect_command()
 	fi
 }
 
+assert_root()
+{
+	if [ $(id -u) != 0 ]; then
+		printf '%s\n' "action requires root"
+		exit 1
+	fi
+}
+
 pm_distro=$(get_distro)
 
 pm_data_dir="${XDG_DATA_HOME:-\${HOME\}/.local/share}"
